@@ -2,21 +2,18 @@
     --heading-color: linear-gradient(106.43deg, #522fd4, #6bdcff 95.12%);
     --fonts: Roboto, sans-serif;
     --sub-heading: #4D3BE3;
+    
 }
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
+    /* overflow-y: hidden; */
 }
 
-.header {
-    background: #f9f8ff;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
+/* Default navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -26,21 +23,17 @@
     flex-wrap: wrap;
 }
 
-.logo img {
-    max-width: 150px;
-    height: auto;
-}
-
 .unorder-list {
     display: flex;
     gap: 20px;
 }
 
-.unorder-list>li {
+.unorder-list > li {
     list-style-type: none;
     cursor: pointer;
 }
 
+/* Hamburger hidden on desktop */
 .hamburger {
     display: none;
     background-image: url('./images/more.png');
@@ -51,121 +44,127 @@
     cursor: pointer;
 }
 
+/* 📱 Mobile View */
+@media screen and (max-width: 768px) {
+  .unorder-list {
+      display: none;   /* menu hidden by default */
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: white;
+      width: 200px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .unorder-list.show {
+      display: flex; /* toggle hoga JS se */
+  }
+
+  .hamburger {
+      display: block; /* mobile pe dikhayega */
+  }
+}
+
 /* FOOTER */
 .Hiring-Mine-Footer {
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    background: var(--heading-color);
-    padding: 40px 20px;
+    background: linear-gradient(to top, #8b5cf6, #4338ca); /* gradient jaisa image me hai */
+    padding: 50px 20px 20px;
     color: white;
     font-family: var(--fonts);
 }
 
-.footer-para {
-    max-width: 350px;
-    text-align: justify;
-}
-
-.list {
-    list-style-type: none;
-    line-height: 30px;
-}
-
-.logo-para-footer {
+/* Container flex */
+.footer-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex-wrap: wrap;  /* ✅ responsive */
-    gap: 30px;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Left Section */
+.footer-left {
+    max-width: 450px;
+}
+.footer-logo {
+    height: 40px;
+    margin-bottom: 15px;
+}
+.footer-small {
+    margin-bottom: 10px;
+}
+.footer-para {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Right Section */
+.footer-right h3 {
+    margin-bottom: 15px;
+}
+.footer-list {
+    list-style: none;
+    padding: 0;
+    line-height: 2;
+    font-size: 14px;
+}
+.footer-list li i {
+    margin-right: 8px;
+}
+
+/* Follow Us */
+.footer-follow {
+    text-align: center;
+    margin: 30px 0 15px;
+}
 .follow-list {
     display: flex;
+    justify-content: center;
     gap: 20px;
-    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
 }
-
-.follow-list>li {
-    list-style-type: none;
-    font-size: 20px;
+.follow-list li {
+    font-size: 22px;
     cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.follow-list li:hover {
+    transform: scale(1.2);
+    color: #FFD700;
 }
 
+/* Bottom line */
 .footer-last-line {
     text-align: center;
-    font-size: 14px;
-    padding-top: 20px;
+    font-size: 13px;
     border-top: 1px solid rgba(255, 255, 255, 0.4);
-    margin-top: 20px;
+    padding-top: 15px;
+}
+.footer-last-line a {
+    color: white;
+    text-decoration: none;
+}
+.footer-last-line a:hover {
+    text-decoration: underline;
 }
 
-
-
-
-/* 📱 Mobile Responsive Styles */
-@media (max-width: 960px) {
-    /* Navbar */
-    .navbar {
-        justify-content: space-between;
-        padding: 15px;
-    }
-
-    .logo img {
-        height: 30px;
-        width: auto;
-    }
-
-    .unorder-list {
-        display: none; /* hide menu */
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background: #fff;
-        width: 200px;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .unorder-list.show {
-        display: flex; /* toggle ke liye class add hogi JS se */
-    }
-
-    .unorder-list li {
-        margin: 10px 0;
-        font-size: 14px;
-    }
-
-    .hamburger {
-        display: block; /* show hamburger */
-    }
-
-    /* Footer */
-    .logo-para-footer {
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    .footer-container {
         flex-direction: column;
         text-align: center;
         gap: 20px;
     }
-
-    .footer-para {
-        width: 100%;
-        height: auto;
-        text-align: center;
-    }
-
-    .list-heading {
+    .footer-right {
         margin-top: 20px;
-    }
-
-    .follow-list {
-        justify-content: center;
-    }
-
-    .footer-last-line {
-        font-size: 12px;
-        padding-top: 15px;
     }
 }
 
@@ -207,7 +206,7 @@
 
 .hero-section-two {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     padding: 20px;
     font-family: var(--fonts);
@@ -272,48 +271,7 @@
   }
 }
 
-.hero-section-three {
-  display: grid;
-  grid-template-columns: repeat(12, 20px); /* 4 equal columns */
-  grid-template-rows: repeat(12, 20px);  /* 3 rows fixed height */
-  gap: 20px;
-  padding: 20px;
-}
-
-/* Card 1 → Column 1 to 3 (span 2 cols), Row 1 */
-.pink {
-  grid-column: 1 / 3;
-  grid-row: 1 / 2;
-  background: #FCE3ED;
-}
-
-/* Card 2 → Column 3 to 5, Row 1 */
-.blue {
-  grid-column: 4 / 6;
-  grid-row: 1 / 2;
-  background: #D9EDFC;
-}
-
-/* Card 3 → Column 1 to 2, Row 2 to 4 (spans 2 rows) */
-.yellow {
-  grid-column: 7 / 9;
-  grid-row: 2 / 4;
-  background: #FFF5C6;
-}
-
-/* Card 4 → Column 2 to 4, Row 2 */
-.orange {
-  grid-column: 9 / 12;
-  grid-row: 2 / 3;
-  background: #FFE8CF;
-}
-
-/* Card 5 → Column 4 to 5, Row 2 to 4 (tall card) */
-.lightblue {
-  grid-column: 4 / 5;
-  grid-row: 2 / 4;
-  background: #DFF4FF;
-}
+/* HIRING MINE IN THE NEWS CARD */
 
 .card {
   border-radius: 12px;
@@ -326,7 +284,6 @@
 }
 
 
-
  .container {
   display: flex;
   justify-content: space-evenly;
@@ -335,81 +292,459 @@
 }
 
 .card-container {
-  height: auto;              /* ✅ auto height for flexibility */
-  width: 300px;              /* fixed width for desktop */
+  height: auto;
+  width: 300px;
   margin: 20px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  font-family: var(--fonts);
+  line-height: 1.5;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* smooth effect */
 }
 
-.card-container img {
+.card-container:hover {
+  transform: translateY(-10px) scale(1.03); /* halka sa upar + zoom */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 8px 20px; /* strong shadow */
+}
+.card-container {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* .card-container img {
   width: 100%;
   height: auto;
   display: block;
-}
+} */
 
 .footer-Form {
-  padding: 20px;
+  padding: 40px 20px;
   font-family: var(--fonts);
   text-align: center;
 }
 
-.form {
-  height: auto;
-  width: 450px;
-  border-radius: 10px;
-  margin: 20px auto; /* ✅ center aligned form */
-  padding: 20px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.footer-Form h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 
-.form input {
+.footer-Form p {
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* FORM STYLING */
+.form {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+  background: #fff;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
   margin-bottom: 15px;
-  padding: 8px;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
+  outline: none;
 }
 
-/* ✅ Responsive Media Queries */
-@media (max-width: 1024px) {
-  .form {
-    width: 80%; /* tablet view */
-  }
+.form textarea {
+  min-height: 120px;
+  resize: none;
+  margin-bottom: 15px;
 }
 
+.form button {
+  background-color: #6851FF;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.form button:hover {
+  background-color: #4c38cc;
+}
+
+/* ✅ Responsive */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* ✅ cards stack vertically */
-    align-items: center;
+  .input-row {
+    flex-direction: column;
   }
-
-  .card-container {
-    width: 90%; /* take most of screen width */
-    margin: 10px 0;
-  }
-
   .form {
-    width: 90%; /* form full width on mobile */
-  }
-
-  .form input {
-    width: 100% !important; /* inputs stretch to form width */
+    width: 90%;
+    padding: 15px;
   }
 }
 
 @media (max-width: 480px) {
-  h1 {
-    font-size: 1.5rem;
+  .footer-Form h1 {
+    font-size: 28px;
+  }
+  .footer-Form p {
+    font-size: 14px;
+  }
+  .form input,
+  .form textarea {
+    font-size: 13px;
+    padding: 8px;
+  }
+  .form button {
+    width: 100%;
+  }
+}
+
+
+
+
+
+/* HERO SECTION 3  CARD VISON AND MISSION */
+
+
+
+.hero-section-three{
+    padding-top: 40px;
+}
+.parent-card-container{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 80px 0px 200px 0px;
+}
+
+.mission-card{
+    width: 544px;
+    height: 208.02px;
+    padding: 25px;
+    font-size: 16px;
+    font-family: var(--fonts);
+    text-align: justify;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 9px;
+    line-height: 1.4;
+
+}
+
+.vision-card{
+    width: 544px;
+    height: 208.02px;
+    padding: 25px;
+    font-size: 16px;
+    font-family: var(--fonts);
+    text-align: justify;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 9px;
+    line-height: 1.4; 
+}
+
+
+/* Tablet & mid screens */
+@media screen and (max-width: 768px) {
+  .parent-card-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0px 100px 0px;
   }
 
-  .form {
-    padding: 15px;
+  .mission-card, 
+  .vision-card {
+    width: 90%;
+    height: auto;
+    margin-bottom: 20px;
   }
 
-  .form input {
-    font-size: 12px;
-    padding: 6px;
+  .mission-card p,
+  .vision-card p {
+    width: 100% !important; /* Fixed for responsiveness */
+  }
+
+  h3 {
+    font-size: 28px !important;
+  }
+}
+
+/* 494px screens fix */
+@media screen and (max-width: 494px) {
+  .mission-card, 
+  .vision-card {
+    width: 95%;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .mission-card p,
+  .vision-card p {
+    width: 100% !important;
+    word-wrap: break-word;
+  }
+
+  h3 {
+    font-size: 24px !important;
+  }
+
+  h5 {
+    font-size: 20px !important;
+  }
+}
+
+/* Samsung S8 Plus (360px width) */
+@media screen and (max-width: 380px) {
+  .mission-card, 
+  .vision-card {
+    width: 95%;
+    padding: 18px;
+    font-size: 13px;
+  }
+
+  h3 {
+    font-size: 22px !important;
+  }
+
+  h5 {
+    font-size: 18px !important;
+  }
+}
+
+
+
+
+/* HIRING MINE JOURNEY CSS  */
+
+.hero-section-journey-hm{
+    padding: 80px 0px 50px 0px; 
+    display: flex;
+    justify-content: space-evenly;
+}
+.hero-section-journey-hm  h5{
+    font-family: var(--fonts);
+    font-size: 40px;
+}
+
+.journey-para{
+    width: 544px;
+    text-align: justify;
+    line-height: 1.4;
+    font-family: var(--fonts);
+}
+
+
+
+/* Base Section */
+.hero-section-journey-hm {
+    padding: 80px 0px 50px 0px; 
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-section-journey-hm h5 {
+    font-family: var(--fonts);
+    font-size: 40px;
+}
+
+.journey-para {
+    width: 544px;
+    text-align: justify;
+    line-height: 1.4;
+    font-family: var(--fonts);
+}
+
+/* Tablets & below */
+@media screen and (max-width: 768px) {
+  .hero-section-journey-hm {
+      flex-direction: column;
+      text-align: center;
+      padding: 40px 20px;
+  }
+
+  .journey-para {
+      width: 100%;
+      font-size: 15px;
+  }
+
+  .hero-section-journey-hm img {
+      width: 90%;
+      height: auto;
+  }
+
+  .hero-section-journey-hm h5 {
+      font-size: 28px;
+  }
+}
+
+/* iPhone Pro (430px & below) */
+@media screen and (max-width: 430px) {
+  .journey-para {
+      font-size: 14px;
+      line-height: 1.5;
+  }
+
+  .hero-section-journey-hm h5 {
+      font-size: 24px;
+  }
+
+  .hero-section-journey-hm img {
+      width: 95%;
+      height: auto;
+  }
+}
+
+/* Samsung S8 Plus (360px & below) */
+@media screen and (max-width: 380px) {
+  .journey-para {
+      font-size: 13px;
+  }
+
+  .hero-section-journey-hm h5 {
+      font-size: 22px;
+  }
+
+  .hero-section-journey-hm img {
+      width: 100%;
+      height: auto;
+  }
+}
+
+
+
+/* HM FEATURES */
+
+#hm-features-para{
+    font-family: var(--fonts);
+    width: 280px;
+    text-align: justify;
+    line-height: 1.4;
+}
+.hiringMine-Features{
+   display: grid;
+   grid-template-columns: repeat(14,70px);
+   grid-template-rows: repeat(12,70px);   
+}
+.box1{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 320px;
+    padding: 20px;
+    border-radius: 9px;
+    margin: 20px;
+    grid-column: 3 / 6;
+    grid-row: 2/7;
+}
+.box2{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 320px;
+    padding: 20px;
+    border-radius: 9px;
+    margin: 20px;
+    grid-column: 3 /6 ;
+    grid-row: 7/12;
+}
+
+
+
+.box3{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 320px;
+    padding: 20px;
+    border-radius: 9px;
+    margin: 20px;
+    grid-column: 8 /12 ;
+    grid-row: 2/7;
+    
+}
+
+.box4{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 320px;
+    padding: 20px;
+    border-radius: 9px;
+    margin: 20px;
+    grid-column: 8 /12 ;
+    grid-row: 7/12;
+    overflow-y: hidden;
+    
+}
+
+.box5{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 320px;
+    padding: 20px;
+    border-radius: 9px;
+    margin: 20px;
+    grid-column: 13/16;
+    grid-row: 2/12;
+}
+
+
+
+
+
+/* ✅ Tablet Responsive (2 column layout) */
+@media screen and (max-width: 992px) {
+  .hiringMine-Features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .hiringMine-Features .box1,
+  .hiringMine-Features .box2,
+  .hiringMine-Features .box3,
+  .hiringMine-Features .box4,
+  .hiringMine-Features .box5 {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 90%;
+    margin: 15px auto;
+  }
+}
+
+/* ✅ Mobile Responsive (1 column layout) */
+@media screen and (max-width: 600px) {
+  .hiringMine-Features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .hiringMine-Features .box1,
+  .hiringMine-Features .box2,
+  .hiringMine-Features .box3,
+  .hiringMine-Features .box4,
+  .hiringMine-Features .box5 {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  #hm-features-para {
+    width: 100%; /* ✅ text bhi box se bahar na nikle */
   }
 }
